@@ -89,10 +89,13 @@ void dynarray_free(dynarray_t a) {
 int main(int argc, char** argv) {
     printf("Exercice 1 : tableau dynamique !\n");
 
+    printf("Attention, les résultats de dynarray_contains peuvent être contrintuitifs\n");
+    printf("Il faut lire la documentation de la fonction\n");
+
     dynarray_t array = dynarray_create();
     print_dynarray(array);
 
-    printf("%d\n", dynarray_contains(array, 3));
+    printf("Contiens 3 : %d\n", dynarray_contains(array, 3));
 
     array = dynarray_add(array, 0);
     array = dynarray_add(array, 3);
@@ -102,7 +105,7 @@ int main(int argc, char** argv) {
     array = dynarray_add(array, 9);
     print_dynarray(array);
     
-    printf("%d\n", dynarray_contains(array, 3));
+    printf("Contiens 3 : %d\n", dynarray_contains(array, 3));
     array = dynarray_remove(array, 3);
     print_dynarray(array);
 
