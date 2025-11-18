@@ -8,5 +8,6 @@
 ### Lancement exercice 3
 `make skiplist run`
 
-## Note
-Un petit test intégré est dans la fonction main et sera lancé
+## Notes
+- Un petit test intégré est dans la fonction main et sera lancé à l'exécution
+- L'exercice 3 a été fait dans le désordre

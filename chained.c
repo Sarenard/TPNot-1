@@ -7,7 +7,7 @@ typedef struct maillon_t {
 } maillon_t;
 
 typedef struct list_t {
-    maillon_t* maillon;
+    maillon_t* maillon; // HEAD
 } list_t;
 
 void print_list(list_t liste) {
