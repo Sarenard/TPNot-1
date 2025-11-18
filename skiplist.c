@@ -2,7 +2,10 @@
 #include <stdlib.h>
 #include <time.h>
 
+#define MIN(X, Y) (((X) < (Y)) ? (X) : (Y))
+
 #define HMAX 3
+
 
 // @content : l'entier contenu
 // @niveaux -> la liste des pointeurs
@@ -36,6 +39,15 @@ skiplist_t skiplist_create() {
 // TODO
 bool skiplist_contains(skiplist_t l, int el) {
     return false;
+}
+
+// hauteur du nouveau maillon
+int get_random_hauteur() {
+    int result = 0;
+    while (rand()%2) {
+        result++;
+    }
+    return MIN(result, HMAX-1);
 }
 
 // TODO
@@ -78,5 +90,18 @@ int main(int argc, char** argv) {
     skiplist_t skiplist = skiplist_create();
 
     printf("Contains 3 : %d\n", skiplist_contains(skiplist, 3));
+
+    int* results = malloc(20 * sizeof(int));
+
+    for (int i = 0; i < 20; i++) {
+        results[i] = get_random_hauteur();
+    }
+
+    printf("Resultats get_hauteur : ");
+    for (int i = 0; i < 20; i++) {
+        printf("%d ", results[i]);
+    }
+    printf("\n");
+
 
 }
