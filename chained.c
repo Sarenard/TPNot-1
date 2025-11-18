@@ -51,15 +51,22 @@ list_t list_add(list_t l, int el) {
         return l;
     }
 
-    // on va a la fin
+    // 
     maillon_t* maillon = l.maillon;
-    while (maillon->suivant != NULL) {
+    while (maillon->suivant != NULL && ((maillon_t*) maillon->suivant)->content < el) {
         maillon = (maillon_t*) maillon->suivant;
     }
     maillon_t* new_maillon = malloc(sizeof(maillon));
     new_maillon->content = el;
     new_maillon->suivant = NULL;
-    maillon->suivant = new_maillon;
+    if (maillon->suivant == NULL) {
+        // si on est a la fin
+        maillon->suivant = new_maillon;
+    } else {
+        // sinon, on rajoute à l'endroit où on est et on fait passer les pointeurs
+        new_maillon->suivant = maillon->suivant;
+        maillon->suivant = new_maillon;
+    }
 
     return l;
 }
@@ -104,10 +111,10 @@ int main(int argc, char** argv) {
     printf("contains 3 : %s\n", list_contains(liste, 3) ? "true" : "false");
 
     liste = list_add(liste, 0);
-    liste = list_add(liste, 3);
-    liste = list_add(liste, 4);
-    liste = list_add(liste, 5);
     liste = list_add(liste, 9);
+    liste = list_add(liste, 5);
+    liste = list_add(liste, 4);
+    liste = list_add(liste, 3);
     print_list(liste);
 
     printf("contains 3 : %s\n", list_contains(liste, 3) ? "true" : "false");
